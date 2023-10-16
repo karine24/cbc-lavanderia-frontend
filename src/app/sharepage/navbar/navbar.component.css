@@ -29,3 +29,12 @@
     background-color: var(--red);
     color: white;
 }
+
+.nav-item {
+    font-weight: bold;
+}
+
+.nav-item:hover {
+    background-color: var(--red);
+    color: white;
+}
