@@ -1,0 +1,31 @@
+.container-fluid {
+    background-color: var(--blue);
+}
+
+/* .container {
+    padding: 5px;
+} */
+
+.container {
+    padding: 5px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.nav {
+    display: inline-block;
+}
+
+.bg-body-tertiary {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.navbar-brand img {
+    border-radius: 50%;
+}
+
+.navbar-nav .nav-link.active-link {
+    background-color: var(--red);
+    color: white;
+}

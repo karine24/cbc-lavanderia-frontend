@@ -1,0 +1,44 @@
+.container {
+    padding-bottom: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.container .main-banner img {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.slogan {
+    background-color: darkblue;
+    color: white;
+    text-align: center;
+    padding: 7px;
+    font-size: large;
+}
+
+.box {
+    padding: 20px 20px;
+    padding-bottom: 40px;
+}
+
+.round-box {
+    border: solid 1px;
+    border-radius: 30px;
+    border-color: lightgray;
+    padding: 7px 15px;
+    padding-bottom: 50px;
+}
+
+.round-box img {
+    vertical-align: top;
+}
+
+p {
+    padding-left: 10px;
+    margin-bottom: 5px;
+}
+
+.btn-secondary {
+    float: right;
+}

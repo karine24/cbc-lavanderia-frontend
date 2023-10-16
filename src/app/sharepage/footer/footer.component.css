@@ -1,0 +1,13 @@
+/* .container-fluid {
+    background-color: var(--blue); */
+    /* position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0; */
+/* } */
+
+.container {
+    padding: 15px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
