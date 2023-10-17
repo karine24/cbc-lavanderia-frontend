@@ -2,18 +2,31 @@
     background-color: var(--blue);
 }
 
-/* .container {
-    padding: 5px;
-} */
-
 .container {
     padding: 5px;
     padding-left: 100px;
     padding-right: 100px;
+    display: flex;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+}
+
+.navbar-div {
+    display: flex;
+    justify-content: left;
+    align-self: center;
 }
 
 .nav {
     display: inline-block;
+}
+
+.navbar-nav > li{
+    padding-left:15px;
+    padding-right:15px;
 }
 
 .bg-body-tertiary {
@@ -26,6 +39,15 @@
 }
 
 .navbar-nav .nav-link.active-link {
+    background-color: var(--red);
+    color: white;
+}
+
+.nav-item {
+    font-weight: bold;
+}
+
+.nav-item:hover {
     background-color: var(--red);
     color: white;
 }
