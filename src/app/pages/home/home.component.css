@@ -6,7 +6,7 @@
 
 .container .main-banner img {
     width: 100%;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .slogan {
@@ -28,6 +28,7 @@
     border-color: lightgray;
     padding: 7px 15px;
     padding-bottom: 50px;
+    margin-top: 20px;
 }
 
 .round-box img {

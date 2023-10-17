@@ -7,11 +7,16 @@
 
 :root {
     --red: #ED1C24;
-    --blue: rgb(129, 187, 230);
+    /* --blue: rgb(129, 187, 230); */
+    /* --blue: #0B73BB; */
+    /* --blue: #1396f1; */
+    --blue: #0d85d8;
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 17px;
+    color: black;
 }
 
 html, body { height: 100%; width: 100%; margin: 0; }
