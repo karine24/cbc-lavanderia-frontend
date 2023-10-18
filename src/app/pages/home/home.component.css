@@ -4,13 +4,51 @@
     padding-right: 100px;
 }
 
-.container .main-banner img {
+.main-banner img {
     width: 100%;
-    /* margin-bottom: 20px; */
+}
+
+.section {
+    padding: 20px 90px;
+}
+
+.section-item {
+    padding: 0px 25px;
+}
+
+.odd {
+    background-color: #ffffff;
+}
+
+.even {
+    background-color: #74b4dc;
+}
+
+h5 {
+    font-weight: bold;
+}
+
+.right-link {
+    width: 100%;
+    text-align: end;
+}
+
+.text {
+    text-align: justify;
+    display: inline-block;
+    width: 100%;
+}
+
+.text a {
+    padding: 0px 0px;
+}
+
+a {
+    color: white;
 }
 
 .slogan {
-    background-color: darkblue;
+    background-color: #ec3c41;
     color: white;
     text-align: center;
     padding: 7px;
@@ -25,15 +63,19 @@
 .round-box {
     border: solid 1px;
     border-radius: 30px;
-    border-color: lightgray;
-    padding: 7px 15px;
-    padding-bottom: 50px;
-    margin-top: 20px;
+    border-color: #d3d3d3;
+    padding: 18px;
+    color: black;
 }
 
 .round-box img {
     vertical-align: top;
 }
+
+.round-box a {
+    color: black;
+}
+
 
 p {
     padding-left: 10px;

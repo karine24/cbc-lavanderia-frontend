@@ -4,8 +4,6 @@
 
 .container {
     padding: 5px;
-    padding-left: 100px;
-    padding-right: 100px;
     display: flex;
 }
 
@@ -38,9 +36,17 @@
     border-radius: 50%;
 }
 
-.navbar-nav .nav-link.active-link {
+.nav-link.active-link {
     background-color: var(--red);
+}
+
+.nav-link {
     color: white;
+    border-radius: 5px;
+}
+
+.nav-link:hover {
+    text-decoration: none;
 }
 
 .nav-item {
@@ -50,4 +56,5 @@
 .nav-item:hover {
     background-color: var(--red);
     color: white;
+    border-radius: 5px;
 }

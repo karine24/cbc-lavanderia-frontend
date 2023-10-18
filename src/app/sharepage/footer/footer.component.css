@@ -1,16 +1,9 @@
-.container {
-    padding: 15px;
-    padding-left: 100px;
-    padding-right: 100px;
+.footer {
+    padding: 20px 90px;
 }
 
 a {
-    color: darkred;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
+    color: lightgray;
 }
 
 h5 {
