@@ -9,10 +9,25 @@
 }
 
 .section {
-    padding: 20px 90px;
+    padding: 25px 90px;
+}
+
+.section {
+    color: #404040;
+}
+
+.section a {
+    color: #404040;
 }
 
 .section-item {
+    padding: 0px 25px;
+    position: relative;
+}
+
+.bottom {
+    position: absolute;
+    bottom: -10px;
     padding: 0px 25px;
 }
 
@@ -21,11 +36,12 @@
 }
 
 .even {
-    background-color: #74b4dc;
+    background-color: #c1e0f5;
 }
 
 h5 {
     font-weight: bold;
+    padding: 0px;
 }
 
 .right-link {
@@ -37,6 +53,7 @@ h5 {
     text-align: justify;
     display: inline-block;
     width: 100%;
+    margin-bottom: 25px;
 }
 
 .text a {
@@ -48,8 +65,12 @@ a {
 }
 
 .slogan {
-    background-color: #ec3c41;
-    color: white;
+    /* background-color: #ec3c41; */
+    /* background-color: #f46369; */
+
+    background-color: #c1e0f5;
+    /* background-color: var(--blue); */
+    color: black;
     text-align: center;
     padding: 7px;
     font-size: large;
@@ -65,7 +86,7 @@ a {
     border-radius: 30px;
     border-color: #d3d3d3;
     padding: 18px;
-    color: black;
+    color: 404040;
 }
 
 .round-box img {

@@ -1,5 +1,6 @@
 .container-fluid {
     background-color: var(--blue);
+    /* box-shadow: 0px 0px 60px -20px var(--blue); */
 }
 
 .container {
@@ -20,11 +21,9 @@
 
 .nav {
     display: inline-block;
-}
-
-.navbar-nav > li{
-    padding-left:15px;
-    padding-right:15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .bg-body-tertiary {
@@ -36,25 +35,28 @@
     border-radius: 50%;
 }
 
+.nav-item {
+    font-weight: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 .nav-link.active-link {
     background-color: var(--red);
 }
 
 .nav-link {
     color: white;
-    border-radius: 5px;
+    border-radius: 50px;
+    padding: 15px !important;
 }
 
 .nav-link:hover {
     text-decoration: none;
 }
 
-.nav-item {
-    font-weight: bold;
-}
-
-.nav-item:hover {
+.nav-link:hover {
     background-color: var(--red);
     color: white;
-    border-radius: 5px;
+    border-radius: 50px;
 }
