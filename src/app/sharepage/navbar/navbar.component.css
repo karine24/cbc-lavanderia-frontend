@@ -1,5 +1,6 @@
 .container-fluid {
     background-color: var(--blue);
+    box-shadow: 0px 0px 40px -10px var(--blue);
 }
 
 .container {
@@ -20,6 +21,9 @@
 
 .nav {
     display: inline-block;
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
 .navbar-nav > li{
@@ -43,18 +47,15 @@
 .nav-link {
     color: white;
     border-radius: 5px;
+    padding: 10px;
+    transition: 0.4s ease-in-out;
 }
 
 .nav-link:hover {
     text-decoration: none;
+    background-color: rgba(236, 60, 65, 0.8);
 }
 
 .nav-item {
     font-weight: bold;
-}
-
-.nav-item:hover {
-    background-color: var(--red);
-    color: white;
-    border-radius: 5px;
 }
