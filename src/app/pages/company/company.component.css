@@ -1,0 +1,26 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #404040;
+    padding: 50px;
+    gap: 50px;
+    font-size: 16px;
+}
+
+.banner, .info  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto;
+    flex-direction: column;
+}
+
+.banner img {
+    max-width: 780px;
+    box-shadow: 0px 0px 15px #000;
+}
+
+.description {
+    text-align: justify;
+}

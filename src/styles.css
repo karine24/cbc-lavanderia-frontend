@@ -1,4 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wght@8..144,400;8..144,700&display=swap');
+
 *
 {
     padding: 0;
@@ -23,7 +26,7 @@ a:hover {
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto Serif', serif;
     font-size: 17px;
     color: white;
 }
