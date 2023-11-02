@@ -1,9 +1,3 @@
-.container {
-    padding-bottom: 30px;
-    padding-left: 100px;
-    padding-right: 100px;
-}
-
 hr {
     margin-top: 0px;
     margin-bottom: 20px;
@@ -28,31 +22,13 @@ hr {
     font-size: 30px;
 }
 
-.main-banner img {
-    width: 100%;
-}
-
 .section {
-    padding: 60px 90px;
-}
-
-.section {
+    padding: 150px 90px;
     color: #404040;
 }
 
 .section a {
     color: #404040;
-}
-
-.section-item {
-    padding: 0px 25px;
-    position: relative;
-}
-
-.bottom {
-    position: absolute;
-    bottom: -10px;
-    padding: 0px 25px;
 }
 
 .odd {
@@ -74,32 +50,8 @@ h5 {
     padding-top: 10px;
 }
 
-.text {
-    text-align: justify;
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 25px;
-}
-
-.text a {
-    padding: 0px 0px;
-}
-
 a {
     color: white;
-}
-
-.slogan {
-    background-color: #c1e0f5;
-    color: black;
-    text-align: center;
-    padding: 7px;
-    font-size: large;
-}
-
-.box {
-    padding: 20px 20px;
-    padding-bottom: 40px;
 }
 
 .round-box {
@@ -124,6 +76,74 @@ p {
     margin-bottom: 0px;
 }
 
-.btn-secondary {
-    float: right;
+.image {
+    padding-top: 210px;
+    padding-bottom: 210px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+    font-size: 30px;
+}
+
+.image h5 {
+    font-size: 30px;
+}
+
+.image-parent {
+    padding: 0px;
+    overflow:hidden;
+}
+
+.stores,
+.prices,
+.contact {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    transition: all .5s;
+}
+
+.image-parent:hover .stores,
+.image-parent:focus .stores,
+.image-parent:hover .prices,
+.image-parent:focus .prices,
+.image-parent:hover .contact,
+.image-parent:focus .contact {
+  transform: scale(1.2);
+}
+
+.stores::before,
+.prices::before,
+.contact::before {
+    content: "";
+    display: none;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(52, 73, 94, 0.3);
+}
+
+.image-parent:hover .stores:before,
+.image-parent:focus .stores:before,
+.image-parent:hover .prices:before,
+.image-parent:focus .prices:before,
+.image-parent:hover .contact:before,
+.image-parent:focus .contact:before {
+    display: block;
+}
+
+.stores {
+    background-image:url(../../../assets/home-stores2.jpg) ;
+}
+
+.prices {
+    background-image:url(../../../assets/home-prices.jpg) ;
+}
+
+.contact {
+    background-image:url(../../../assets/home-contact2.jpg) ;
 }
