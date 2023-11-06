@@ -1,5 +1,11 @@
 .footer {
     padding: 20px 90px;
+    color: white;
+}
+
+.sobre, .contact {
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 a {
