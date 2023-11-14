@@ -1,0 +1,17 @@
+.container-fluid, .center {
+    display: flex;
+    justify-content: center;
+}
+
+form {
+    border: solid 1px;
+    border-radius: 30px;
+    border-color: #d3d3d3;
+    padding: 50px;
+    margin: 100px;
+    color: 404040;
+}
+
+.padding-bottom {
+    padding-bottom: 20px;
+}

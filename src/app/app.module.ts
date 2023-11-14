@@ -10,6 +10,14 @@ import { CompanyComponent } from './pages/company/company.component';
 import { StoresComponent } from './pages/stores/stores.component';
 import { PricesComponent } from './pages/prices/prices.component';
 import { ContactComponent } from './pages/contact/contact.component';
+// Firebase services + environment module
+import { environment } from '../environments/environment';
+import { provideAuth,getAuth } from '@angular/fire/auth';
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { SignInComponent } from './components/sign-in/sign-in.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { AuthService } from './shared/services/auth.service';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,13 +28,18 @@ import { ContactComponent } from './pages/contact/contact.component';
     CompanyComponent,
     StoresComponent,
     PricesComponent,
-    ContactComponent
+    ContactComponent,
+    SignInComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth())
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
