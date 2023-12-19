@@ -23,6 +23,7 @@ hr {
 }
 
 .section {
+    white-space: pre-line;
     padding: 150px 90px;
     color: #404040;
 }
@@ -116,13 +117,13 @@ p {
 .image-parent:focus .prices,
 .image-parent:hover .contact,
 .image-parent:focus .contact {
-  transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 .stores::before,
 .prices::before,
 .contact::before {
-    content: "";
+    /* content: ""; */
     display: none;
     height: 100%;
     width: 100%;
@@ -151,4 +152,28 @@ p {
 
 .contact {
     background-image:url(../../../assets/home-contact2.jpg) ;
+}
+
+button {
+    width: auto;
+}
+
+.save-button {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 50px;
+}
+
+input {
+    width: 100%;
+    text-align: center;
+    outline: 0;
+    border-width: 0 0 0px;
+}
+
+textarea {
+    width: 100%;
+    text-align: inherit;
+    outline: 0;
+    border-width: 0 0 0px;
 }
