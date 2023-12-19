@@ -1,6 +1,6 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth/auth.service';
 import { Observable } from 'rxjs';
 
 export const secureInnerPageGuard : CanActivateFn = (route, state): Observable<boolean> | Promise<boolean> | boolean => {

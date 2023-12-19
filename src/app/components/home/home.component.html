@@ -1,0 +1,53 @@
+<div class="section odd">
+    <div *ngIf="!isInternalPage" class="title"><h5>{{homeData.homeInfoTitle}}</h5></div>
+    <div *ngIf="isInternalPage" class="title"><h5><input type="text" [(ngModel)]="homeData.homeInfoTitle" /></h5></div>
+    
+    <hr>
+
+    <div *ngIf="!isInternalPage">
+        {{homeData.homeInfoContent}}
+    </div>
+
+    <div *ngIf="isInternalPage">
+        <textarea autosize [(ngModel)]="homeData.homeInfoContent"></textarea>
+    </div>
+
+    <div>
+        <a class="right-link" routerLink="company">Mais detalhes</a>
+    </div>    
+</div>
+
+<div class="row even">
+    <div class="image-parent col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="image stores">
+            <a routerLink="stores"> <h5>Lojas</h5></a>
+        </div>
+    </div>
+    <div class="image-parent col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="image prices">
+            <a routerLink="prices"> <h5>Preços</h5></a>
+        </div>
+    </div>
+    <div class="image-parent col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4">
+        <div class="image contact">
+            <a routerLink="contact"> <h5>Contato</h5></a>
+        </div>
+    </div> 
+</div>
+
+<div class="row section odd">
+    <div class="round-box col-12">
+        <h5>{{homeData.hintTitle}} <img src="assets/icons/lightbulb-fill.svg"></h5>
+
+        <p *ngIf="!isInternalPage">{{homeData.hintContent}}</p>
+        <p *ngIf="isInternalPage"><textarea rows="1" [(ngModel)]="homeData.hintContent"></textarea></p>
+
+        <div class="row col-12">
+            <a class="right-link" routerLink="company">Mais detalhes</a>
+        </div>
+    </div>
+</div>
+
+<div class="row odd save-button" *ngIf="isInternalPage">
+    <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
+</div>
