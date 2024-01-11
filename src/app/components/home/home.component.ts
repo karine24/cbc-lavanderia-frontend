@@ -4,6 +4,8 @@ import { TitleContentService } from 'src/app/services/home/title-content.service
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
+import { LOCAL_STORAGE_KEY } from 'src/app/constants/local-storage-key.constant';
+import { TitleContent } from 'src/app/models/home/title-content.model';
 
 @Component({
   selector: 'app-home',
@@ -17,8 +19,8 @@ export class HomeComponent implements OnInit {
     private localStorageService: LocalStorageService
   ) {}
 
-    titleContentServiceId = '';
-    homeData: Home = {
+  titleContentId = '';
+  homeData: Home = {
     homeInfoTitle: '',
     homeInfoContent: '',
     hintTitle: '',
@@ -27,29 +29,40 @@ export class HomeComponent implements OnInit {
   isInternalPage = this.router.url.includes("internal");
 
   ngOnInit() {
-    console.log('entrou');
-    this.titleContentService.getAll().snapshotChanges().pipe(
-      map(changes =>
-        changes.map(change =>
-          ({ ...change.payload.doc.data(), id: change.payload.doc.id })
+    console.log('entrou ngOnInit home');
+    const localStorageData: TitleContent = 
+      this.localStorageService.get(LOCAL_STORAGE_KEY.websiteContent);
+
+    if (localStorageData) {
+      console.log('usou localStorageData - home');
+      this.homeData = localStorageData;
+      this.titleContentId = localStorageData.id;
+    } else {
+      this.titleContentService.getAll().snapshotChanges().pipe(
+        map(changes =>
+          changes.map(change =>
+            ({ ...change.payload.doc.data(), id: change.payload.doc.id })
+          )
         )
-      )
-    ).subscribe(data => {
-      console.log(data);
-      this.homeData = data[0];
-      this.titleContentServiceId = data[0].id;
-      this.localStorageService.set('title-content', {...this.homeData, id: this.titleContentServiceId});
-    });
+      ).subscribe(data => {
+        console.log(data);
+        this.homeData = data[0];
+        this.titleContentId = data[0].id;
+        this.localStorageService.set(LOCAL_STORAGE_KEY.websiteContent, 
+          {...this.homeData, id: this.titleContentId, updatedAt: new Date()});
+      });
+    }
   }
 
   onSave() {
-    if (this.titleContentServiceId) {
+    if (this.titleContentId) {
       console.log('entrou');
-      console.log(this.titleContentServiceId);
+      console.log(this.titleContentId);
       console.log(this.homeData);
-      this.titleContentService.update(this.titleContentServiceId, this.homeData)
+      this.titleContentService.update(this.titleContentId, this.homeData)
       .then(() => {
-        this.localStorageService.set('title-content', {...this.homeData, id: this.titleContentServiceId});
+        this.localStorageService.set(LOCAL_STORAGE_KEY.websiteContent, 
+          {...this.homeData, id: this.titleContentId, updatedAt: new Date()});
         alert('Dados atualizados com sucesso!');
       })
       .catch(err => {

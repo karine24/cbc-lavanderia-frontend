@@ -1,40 +1,38 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { map } from 'rxjs';
 import { LOCAL_STORAGE_KEY } from 'src/app/constants/local-storage-key.constant';
+import { Prices } from 'src/app/models/home/prices.model';
 import { TitleContent } from 'src/app/models/home/title-content.model';
 import { TitleContentService } from 'src/app/services/home/title-content.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
-import { map } from 'rxjs/operators';
-import { Stores } from 'src/app/models/home/stores.model';
 
 @Component({
-  selector: 'app-stores',
-  templateUrl: './stores.component.html',
-  styleUrls: ['./stores.component.css']
+  selector: 'app-prices',
+  templateUrl: './prices-table.component.html',
+  styleUrls: ['./prices-table.component.css']
 })
-export class StoresComponent {
+export class PricesTableComponent implements OnInit {
   constructor(
     private titleContentService: TitleContentService,
-    private localStorageService: LocalStorageService,
-    private router: Router,    
+    private router: Router,
+    private localStorageService: LocalStorageService
   ) {}
 
   titleContentId = '';
-  storesData: Stores = {
-    storesAddressesContent: [''],
-    storesNeighborhoodsContent: [''],
-    storesPhonesContent: ['']
+  pageData: Prices = {
+    pricesHintContent: '',
   }
   isInternalPage = this.router.url.includes("internal");
 
   ngOnInit() {
-    console.log('entrou ngOnInit stores');
+    console.log('entrou ngOnInit home');
     const localStorageData: TitleContent = 
       this.localStorageService.get(LOCAL_STORAGE_KEY.websiteContent);
 
     if (localStorageData) {
-      console.log('usou localStorageData - stores');
-      this.storesData = localStorageData;
+      console.log('usou localStorageData - prices1');
+      this.pageData = localStorageData;
       this.titleContentId = localStorageData.id;
     } else {
       this.titleContentService.getAll().snapshotChanges().pipe(
@@ -45,10 +43,10 @@ export class StoresComponent {
         )
       ).subscribe(data => {
         console.log(data);
-        this.storesData = data[0];
+        this.pageData = data[0];
         this.titleContentId = data[0].id;
         this.localStorageService.set(LOCAL_STORAGE_KEY.websiteContent, 
-          {...this.storesData, id: this.titleContentId, updatedAt: new Date()});
+          {...this.pageData, id: this.titleContentId, updatedAt: new Date()});
       });
     }
   }
@@ -57,12 +55,11 @@ export class StoresComponent {
     if (this.titleContentId) {
       console.log('entrou');
       console.log(this.titleContentId);
-      console.log(this.storesData);
-      this.titleContentService.update(this.titleContentId, this.storesData)
+      console.log(this.pageData);
+      this.titleContentService.update(this.titleContentId, this.pageData)
       .then(() => {
-        console.log(this.storesData.storesAddressesContent[0]);
         this.localStorageService.set(LOCAL_STORAGE_KEY.websiteContent, 
-          {...this.storesData, id: this.titleContentId, updatedAt: new Date()});
+          {...this.pageData, id: this.titleContentId, updatedAt: new Date()});
         alert('Dados atualizados com sucesso!');
       })
       .catch(err => {

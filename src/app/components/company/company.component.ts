@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
+import { LOCAL_STORAGE_KEY } from 'src/app/constants/local-storage-key.constant';
 import { Company } from 'src/app/models/home/company.model';
 import { TitleContent } from 'src/app/models/home/title-content.model';
 import { TitleContentService } from 'src/app/services/home/title-content.service';
@@ -27,7 +28,8 @@ export class CompanyComponent {
 
   ngOnInit() {
     console.log('entrou');
-    const localStorageData: TitleContent = this.localStorageService.get('title-content');
+    const localStorageData: TitleContent = 
+      this.localStorageService.get(LOCAL_STORAGE_KEY.websiteContent);
 
     if (localStorageData) {
       console.log('usou localStorageData');
@@ -45,7 +47,8 @@ export class CompanyComponent {
         this.companyData = data[0];
         // this.companyData.companyContent = this.companyData.companyContent.replace("\\n", "\n")
         this.titleContentServiceId = data[0].id;
-        this.localStorageService.set('title-content', {...this.companyData, id: this.titleContentServiceId});
+        this.localStorageService.set(LOCAL_STORAGE_KEY.websiteContent, 
+          {...this.companyData, id: this.titleContentServiceId, updatedAt: new Date()});
       });
     }    
   }
@@ -57,7 +60,8 @@ export class CompanyComponent {
       console.log(this.companyData);
       this.titleContentService.update(this.titleContentServiceId, this.companyData)
       .then(() => {
-        this.localStorageService.set('title-content', {...this.companyData, id: this.titleContentServiceId});
+        this.localStorageService.set(LOCAL_STORAGE_KEY.websiteContent, 
+          {...this.companyData, id: this.titleContentServiceId, updatedAt: new Date()});
         alert('Dados atualizados com sucesso!');
       })
       .catch(err => {
