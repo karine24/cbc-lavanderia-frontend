@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Company } from 'src/app/models/home/company.model';
 import { Home } from 'src/app/models/home/home.model';
+import { Prices } from 'src/app/models/home/prices.model';
+import { Stores } from 'src/app/models/home/stores.model';
 import { TitleContent } from 'src/app/models/home/title-content.model';
 
 @Injectable({
@@ -19,7 +21,7 @@ export class TitleContentService {
     return this.homeRef;
   }
 
-  update(id: string, data: Home | Company): Promise<void> {
+  update(id: string, data: Home | Company | Stores | Prices): Promise<void> {
     console.log(`data: ${JSON.stringify(data)}`)
     const teste = this.homeRef.doc(id).update({ ...data });
     // const teste = this.homeRef.doc(id).update({ homeInfoTitle: 'data' });
