@@ -25,16 +25,19 @@
                 <th scope="col">Bairro</th>
                 <th scope="col">Endereço</th>
                 <th scope="col">Telefone</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let neighborhoods of this.storesData.storesNeighborhoodsContent; let i = index;">
+            <tr *ngFor="let neighborhoods of this.storesData.storesNeighborhoodsContent; let i = index; trackBy: trackByIndex">
                 <td><input type="text" [(ngModel)]="this.storesData.storesNeighborhoodsContent[i]" /></td>
                 <td><input type="text" [(ngModel)]="this.storesData.storesAddressesContent[i]" /></td>
                 <td><input type="text" [(ngModel)]="this.storesData.storesPhonesContent[i]" /></td>
+                <td> <button class="btn btn-secondary" type="button" (click)="deleteTableElement(i)">Deletar</button> </td>
             </tr>
         </tbody>
     </table>
+    <button *ngIf="isInternalPage" class="btn btn-secondary" type="button" (click)="addTableElement()">+</button>
 </div>
 
 <div class="row odd save-button" *ngIf="isInternalPage">

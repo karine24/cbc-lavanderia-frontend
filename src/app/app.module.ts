@@ -22,7 +22,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { AutosizeModule } from 'ngx-autosize';
-import { PricesTableComponent } from './components/prices-table/prices-table.component';
+import { PricesDetailsComponent } from './components/prices-details/prices-details.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +36,7 @@ import { PricesTableComponent } from './components/prices-table/prices-table.com
     ContactComponent,
     SignInComponent,
     ForgotPasswordComponent,
-    PricesTableComponent,
+    PricesDetailsComponent,
   ],
   imports: [
     AutosizeModule,

@@ -75,4 +75,20 @@ export class StoresComponent {
     console.log('Salvando dados...');
   }
 
+  deleteTableElement(index: number) {
+    this.storesData.storesNeighborhoodsContent.splice(index, 1);
+    this.storesData.storesAddressesContent.splice(index, 1);
+    this.storesData.storesPhonesContent.splice(index, 1);
+  }
+
+  addTableElement() {
+    this.storesData.storesNeighborhoodsContent.push('');
+    this.storesData.storesAddressesContent.push('');
+    this.storesData.storesPhonesContent.push('');
+  }
+
+  trackByIndex (index: number) { 
+    return index 
+  }
+
 }

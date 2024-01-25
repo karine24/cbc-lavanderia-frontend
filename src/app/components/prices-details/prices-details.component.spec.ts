@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PricesTableComponent } from './prices-table.component';
+import { PricesDetailsComponent } from './prices-details.component';
 
 describe('PricesComponent', () => {
-  let component: PricesTableComponent;
-  let fixture: ComponentFixture<PricesTableComponent>;
+  let component: PricesDetailsComponent;
+  let fixture: ComponentFixture<PricesDetailsComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PricesTableComponent]
+      declarations: [PricesDetailsComponent]
     });
-    fixture = TestBed.createComponent(PricesTableComponent);
+    fixture = TestBed.createComponent(PricesDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
