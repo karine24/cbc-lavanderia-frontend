@@ -24,13 +24,24 @@ hr {
 
 .section {
     white-space: pre-line;
-    padding: 150px 90px;
+    padding: 150px 90px 3px 90px;
+    color: #404040;
+}
+
+.top-hint {
+    white-space: pre-line;
+    padding: 50px 90px 150px 90px;
     color: #404040;
 }
 
 .odd {
     background-color: #ffffff;
 }
+
+.empty {
+    padding-bottom: 150px;
+}
+
 
 .even {
     background-color: #c1e0f5;

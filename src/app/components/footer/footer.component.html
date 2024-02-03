@@ -2,19 +2,34 @@
     <div class="row informacoes topo-secao">
         <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 sobre">
             <div class="row titulo"> <h5>Funcionamento</h5></div>
-            <div>
-                De segunda a sexta-feira, das 8h às 18h.
+            <div *ngIf="!(isLoggedIn | async)">
+                {{footerData.footerScheduleContent}}
+            </div>
+        
+            <div *ngIf="isLoggedIn | async">
+                <textarea autosize [(ngModel)]="footerData.footerScheduleContent"></textarea>
             </div>
         </div>
         <div class="row col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6 contact">
             <div class="row titulo"><h5>Contato</h5> </div>
             <div>
                 Entre em contato com a CBC Lavanderia nos telefones:
-                <br> (31) 3411-2008 | 2535-2005 ou 
+
+                <div *ngIf="!(isLoggedIn | async)">
+                    {{footerData.footerContactPhonesContent}}
+                </div>
+            
+                <div *ngIf="isLoggedIn | async">
+                    <textarea autosize [(ngModel)]="footerData.footerContactPhonesContent"></textarea>
+                </div>
+                ou
                 <a routerLink="contact">
                     através de nosso formulário de contato.
                 </a>
             </div>
+        </div>
+        <div class="row odd save-button" *ngIf="isLoggedIn | async">
+            <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
         </div>
     </div>
 </footer>

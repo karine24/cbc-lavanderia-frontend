@@ -1,8 +1,12 @@
 <div class="section odd">
+    <a routerLink="/prices">
+        <img src="assets/icons/arrow-return.svg" height="30" width="30" priority>
+    </a>
+    
     <div class="title"><h5>Preços - {{typeName}}</h5></div>    
     <hr>
 
-    <table *ngIf="!isInternalPage" class="table table-striped table-bordered">
+    <table *ngIf="!isLoggedIn" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col">Artigo</th>
@@ -17,7 +21,7 @@
         </tbody>
     </table>
 
-    <table *ngIf="isInternalPage" class="table table-striped table-bordered">
+    <table *ngIf="isLoggedIn" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col">Bairro</th>
@@ -33,9 +37,16 @@
             </tr>
         </tbody>
     </table>
-    <button *ngIf="isInternalPage" class="btn btn-secondary" type="button" (click)="addTableElement()">+</button>
+    <button *ngIf="isLoggedIn" class="btn btn-secondary" type="button" (click)="addTableElement()">+</button>
 </div>
 
-<div class="row odd save-button" *ngIf="isInternalPage">
+<div class="row odd prices-notes">
+    <div class="round-box col-12">
+        <p *ngIf="!isLoggedIn">{{notes}}</p>
+        <p *ngIf="isLoggedIn"><textarea autosize [(ngModel)]="notes"></textarea></p>
+    </div>
+</div>
+
+<div class="row odd save-button" *ngIf="isLoggedIn">
     <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
 </div>

@@ -5,6 +5,9 @@
                 <a class="navbar-brand" routerLink="">
                     <img src="assets\cbc-logo.png" width="240" height="150">
                 </a>
+                <div class="logout-button" *ngIf="isLoggedIn  | async">
+                    <button type="submit" class="btn btn-primary" (click)="logout()">Logout</button>
+                </div>
             </div>
             <div class="slogan col-12">
                 SUA ROUPA, TAPETE E CORTINA DE CARA LIMPA

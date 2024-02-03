@@ -17,6 +17,12 @@ nav {
     padding-bottom: 40px;
 }
 
+.logout-button {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+
 .slogan {
     display: flex;
     justify-content: center;

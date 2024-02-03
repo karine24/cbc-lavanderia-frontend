@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 import { LOCAL_STORAGE_KEY } from 'src/app/constants/local-storage-key.constant';
 import { Company } from 'src/app/models/home/company.model';
 import { TitleContent } from 'src/app/models/home/title-content.model';
 import { TitleContentService } from 'src/app/services/home/title-content.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Component({
@@ -15,7 +15,7 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage/local
 export class CompanyComponent {
   constructor(
     private titleContentService: TitleContentService,
-    private router: Router,
+    private authService: AuthService,
     private localStorageService: LocalStorageService
   ) {}
 
@@ -24,7 +24,7 @@ export class CompanyComponent {
     companyTitle: '',
     companyContent: '',
   }
-  isInternalPage = this.router.url.includes("internal");
+  isLoggedIn = this.authService.isLogged;
 
   ngOnInit() {
     console.log('entrou');
@@ -70,7 +70,7 @@ export class CompanyComponent {
       )
         
     }
-    console.log(this.isInternalPage);
+    console.log(this.isLoggedIn);
     console.log('Salvando dados...');
   }
 

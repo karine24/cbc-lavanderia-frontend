@@ -9,6 +9,7 @@ import { SignInComponent } from './components/sign-in/sign-in.component';
 import { secureInnerPageGuard } from './shared/guard/secure-inner-page.guard';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { PricesDetailsComponent } from './components/prices-details/prices-details.component';
+import { HintsComponent } from './components/hints/hints.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -19,12 +20,7 @@ const routes: Routes = [
   {path: 'prices', component: PricesComponent},
   {path: 'prices/details', component: PricesDetailsComponent},
   {path: 'contact', component: ContactComponent},
-  {path: 'internal', component: HomeComponent, canActivate: [secureInnerPageGuard]},
-  {path: 'internal/company', component: CompanyComponent, canActivate: [secureInnerPageGuard]},
-  {path: 'internal/stores', component: StoresComponent, canActivate: [secureInnerPageGuard]},
-  {path: 'internal/prices', component: PricesComponent, canActivate: [secureInnerPageGuard]},
-  {path: 'internal/prices/details', component: PricesDetailsComponent, canActivate: [secureInnerPageGuard]},
-  {path: 'internal/contact', component: ContactComponent, canActivate: [secureInnerPageGuard]},
+  {path: 'hints', component: HintsComponent},
 ];
 
 @NgModule({

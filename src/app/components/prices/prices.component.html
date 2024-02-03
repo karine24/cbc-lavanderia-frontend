@@ -3,6 +3,15 @@
     <hr>
 </div>
 
+<div class="row top-hint odd">
+    <div class="round-box col-12">
+        <h5>Dicas <img src="assets/icons/lightbulb-fill.svg"></h5>
+
+        <p *ngIf="!isLoggedIn">{{pageData.pricesHintContent}}</p>
+        <p *ngIf="isLoggedIn"><textarea rows="1" [(ngModel)]="pageData.pricesHintContent"></textarea></p>
+    </div>
+</div>
+
 <div class="row even">
     <div class="image-parent col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
         <div class="image kilo">
@@ -56,15 +65,8 @@
     </div>
 </div>
 
-<div class="row section odd">
-    <div class="round-box col-12">
-        <h5>Dicas <img src="assets/icons/lightbulb-fill.svg"></h5>
-
-        <p *ngIf="!isInternalPage">{{pageData.pricesHintContent}}</p>
-        <p *ngIf="isInternalPage"><textarea rows="1" [(ngModel)]="pageData.pricesHintContent"></textarea></p>
-    </div>
-</div>
-
-<div class="row odd save-button" *ngIf="isInternalPage">
+<div class="row odd save-button" *ngIf="isLoggedIn">
     <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
+</div>
+<div class="row odd empty" *ngIf="!isLoggedIn">
 </div>

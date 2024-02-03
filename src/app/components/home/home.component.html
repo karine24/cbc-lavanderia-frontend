@@ -1,14 +1,14 @@
 <div class="section odd">
-    <div *ngIf="!isInternalPage" class="title"><h5>{{homeData.homeInfoTitle}}</h5></div>
-    <div *ngIf="isInternalPage" class="title"><h5><input type="text" [(ngModel)]="homeData.homeInfoTitle" /></h5></div>
+    <div *ngIf="!(isLoggedIn | async)" class="title"><h5>{{homeData.homeInfoTitle}}</h5></div>
+    <div *ngIf="isLoggedIn | async" class="title"><h5><input type="text" [(ngModel)]="homeData.homeInfoTitle" /></h5></div>
     
     <hr>
 
-    <div *ngIf="!isInternalPage">
+    <div *ngIf="!(isLoggedIn | async)">
         {{homeData.homeInfoContent}}
     </div>
 
-    <div *ngIf="isInternalPage">
+    <div *ngIf="isLoggedIn | async">
         <textarea autosize [(ngModel)]="homeData.homeInfoContent"></textarea>
     </div>
 
@@ -39,15 +39,15 @@
     <div class="round-box col-12">
         <h5>{{homeData.hintTitle}} <img src="assets/icons/lightbulb-fill.svg"></h5>
 
-        <p *ngIf="!isInternalPage">{{homeData.hintContent}}</p>
-        <p *ngIf="isInternalPage"><textarea rows="1" [(ngModel)]="homeData.hintContent"></textarea></p>
+        <p *ngIf="!(isLoggedIn | async)">{{homeData.hintContent}}</p>
+        <p *ngIf="isLoggedIn | async"><textarea autosize [(ngModel)]="homeData.hintContent"></textarea></p>
 
         <div class="row col-12">
-            <a class="right-link" routerLink="company">Mais detalhes</a>
+            <a class="right-link" routerLink="hints">Mais detalhes</a>
         </div>
     </div>
 </div>
 
-<div class="row odd save-button" *ngIf="isInternalPage">
+<div class="row odd save-button" *ngIf="isLoggedIn | async">
     <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
 </div>

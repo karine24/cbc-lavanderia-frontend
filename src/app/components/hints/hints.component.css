@@ -24,13 +24,7 @@ hr {
 
 .section {
     white-space: pre-line;
-    padding: 150px 90px 10px 90px;
-    color: #404040;
-}
-
-.prices-notes {
-    white-space: pre-line;
-    padding: 0px 90px 150px 90px;
+    padding: 150px 90px;
     color: #404040;
 }
 
@@ -43,12 +37,25 @@ h5 {
     padding: 0px;
 }
 
+.right-link {
+    display: flex;
+    justify-content: right;
+    padding-top: 10px;
+}
+
 a {
     color: white;
 }
 
 button {
     width: auto;
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 .save-button {
@@ -59,10 +66,9 @@ button {
 
 input {
     width: 100%;
-    text-align: left;
+    text-align: center;
     outline: 0;
     border-width: 0 0 0px;
-    background-color: transparent;
 }
 
 textarea {
@@ -70,6 +76,4 @@ textarea {
     text-align: inherit;
     outline: 0;
     border-width: 0 0 0px;
-    background-color: transparent;
 }
-
