@@ -1,0 +1,22 @@
+<div class="section odd">
+    <div *ngIf="!isLoggedIn" class="title"><h5>{{hintsData.hintsTitle}}</h5></div>
+    <div *ngIf="isLoggedIn" class="title"><h5><input type="text" [(ngModel)]="hintsData.hintsTitle" /></h5></div>
+    
+    <hr>    
+
+    <div *ngIf="!isLoggedIn">
+        {{hintsData.hintsContent}}
+    </div>
+
+    <div *ngIf="isLoggedIn">
+        <textarea autosize [(ngModel)]="hintsData.hintsContent"></textarea>
+    </div>
+
+    <div class="center">
+        <img src="assets\icones_etiqueta.gif">
+    </div>
+</div>
+
+<div class="row odd save-button" *ngIf="isLoggedIn">
+    <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
+</div>

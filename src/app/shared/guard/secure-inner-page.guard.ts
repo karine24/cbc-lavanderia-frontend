@@ -9,7 +9,7 @@ export const secureInnerPageGuard : CanActivateFn = (route, state): Observable<b
 
   // Check the user is logged in or not(In case the user is not logged in he will be redirected to Signin page)
   if(authService.isLoggedIn !== true) {
-    router.navigate(['sign-in'])
+    router.navigate(['login'])
   }
   return true;
 };

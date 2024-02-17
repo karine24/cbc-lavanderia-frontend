@@ -1,18 +1,18 @@
 <div class="section odd">
-    <div *ngIf="!isInternalPage" class="title"><h5>{{companyData.companyTitle}}</h5></div>
-    <div *ngIf="isInternalPage" class="title"><h5><input type="text" [(ngModel)]="companyData.companyTitle" /></h5></div>
+    <div *ngIf="!(isLoggedIn | async)" class="title"><h5>{{companyData.companyTitle}}</h5></div>
+    <div *ngIf="isLoggedIn | async" class="title"><h5><input type="text" [(ngModel)]="companyData.companyTitle" /></h5></div>
     
     <hr>
 
-    <div *ngIf="!isInternalPage">
+    <div *ngIf="!(isLoggedIn | async)">
         {{companyData.companyContent}}
     </div>
 
-    <div *ngIf="isInternalPage">
+    <div *ngIf="isLoggedIn | async">
         <textarea autosize [(ngModel)]="companyData.companyContent"></textarea>
     </div>
 </div>
 
-<div class="row odd save-button" *ngIf="isInternalPage">
+<div class="row odd save-button" *ngIf="isLoggedIn | async">
     <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
 </div>

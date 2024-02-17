@@ -1,0 +1,52 @@
+<div class="section odd">
+    <a routerLink="/prices">
+        <img src="assets/icons/arrow-return.svg" height="30" width="30" priority>
+    </a>
+    
+    <div class="title"><h5>Preços - {{typeName}}</h5></div>    
+    <hr>
+
+    <table *ngIf="!isLoggedIn" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Artigo</th>
+                <th scope="col">Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prices of this.pricesItens; let i = index;">
+                <td>{{ this.pricesItens[i] }}</td>
+                <td>{{ this.pricesValues[i] }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <table *ngIf="isLoggedIn" class="table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">Bairro</th>
+                <th scope="col">Endereço</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let prices of this.pricesItens; let i = index; trackBy: trackByIndex">
+                <td><input type="text" [(ngModel)]="this.pricesItens[i]" /></td>
+                <td><input type="text" [(ngModel)]="this.pricesValues[i]" /></td>
+                <td> <button class="btn btn-secondary" type="button" (click)="deleteTableElement(i)">Deletar</button> </td>
+            </tr>
+        </tbody>
+    </table>
+    <button *ngIf="isLoggedIn" class="btn btn-secondary" type="button" (click)="addTableElement()">+</button>
+</div>
+
+<div class="row odd prices-notes">
+    <div class="round-box col-12">
+        <p *ngIf="!isLoggedIn">{{notes}}</p>
+        <p *ngIf="isLoggedIn"><textarea autosize [(ngModel)]="notes"></textarea></p>
+    </div>
+</div>
+
+<div class="row odd save-button" *ngIf="isLoggedIn">
+    <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
+</div>

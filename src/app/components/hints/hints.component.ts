@@ -1,65 +1,68 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component } from '@angular/core';
 import { map } from 'rxjs';
 import { LOCAL_STORAGE_KEY } from 'src/app/constants/local-storage-key.constant';
-import { Prices } from 'src/app/models/home/prices.model';
+import { Hints } from 'src/app/models/home/hints.model';
 import { TitleContent } from 'src/app/models/home/title-content.model';
 import { TitleContentService } from 'src/app/services/home/title-content.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Component({
-  selector: 'app-prices',
-  templateUrl: './prices-table.component.html',
-  styleUrls: ['./prices-table.component.css']
+  selector: 'app-hints',
+  templateUrl: './hints.component.html',
+  styleUrls: ['./hints.component.css']
 })
-export class PricesTableComponent implements OnInit {
+export class HintsComponent {
   constructor(
     private titleContentService: TitleContentService,
-    private router: Router,
+    private authService: AuthService,
     private localStorageService: LocalStorageService
   ) {}
 
-  titleContentId = '';
-  pageData: Prices = {
-    pricesHintContent: '',
+  titleContentServiceId = '';
+  hintsData: Hints = {
+    hintsTitle: '',
+    hintsContent: '',
   }
-  isInternalPage = this.router.url.includes("internal");
+  isLoggedIn = this.authService.isLogged;
 
   ngOnInit() {
-    console.log('entrou ngOnInit home');
+    console.log('entrou hints');
+    // console.log(this.router.url);
     const localStorageData: TitleContent = 
       this.localStorageService.get(LOCAL_STORAGE_KEY.websiteContent);
 
     if (localStorageData) {
-      console.log('usou localStorageData - prices1');
-      this.pageData = localStorageData;
-      this.titleContentId = localStorageData.id;
+      console.log('usou localStorageData');
+      this.hintsData = localStorageData;
+      this.titleContentServiceId = localStorageData.id;
     } else {
       this.titleContentService.getAll().snapshotChanges().pipe(
-        map(changes =>
+        map((changes) =>
           changes.map(change =>
             ({ ...change.payload.doc.data(), id: change.payload.doc.id })
           )
         )
       ).subscribe(data => {
         console.log(data);
-        this.pageData = data[0];
-        this.titleContentId = data[0].id;
+        this.hintsData = data[0];
+        // this.hintsData.hintsContent = this.hintsData.hintsContent.replace("\\n", "\n")
+        this.titleContentServiceId = data[0].id;
         this.localStorageService.set(LOCAL_STORAGE_KEY.websiteContent, 
-          {...this.pageData, id: this.titleContentId, updatedAt: new Date()});
+          {...this.hintsData, id: this.titleContentServiceId, updatedAt: new Date()});
       });
-    }
+    }    
   }
 
   onSave() {
-    if (this.titleContentId) {
+    if (this.titleContentServiceId) {
       console.log('entrou');
-      console.log(this.titleContentId);
-      console.log(this.pageData);
-      this.titleContentService.update(this.titleContentId, this.pageData)
+      console.log(this.titleContentServiceId);
+      console.log(this.hintsData);
+      this.titleContentService.update(this.titleContentServiceId, this.hintsData)
       .then(() => {
         this.localStorageService.set(LOCAL_STORAGE_KEY.websiteContent, 
-          {...this.pageData, id: this.titleContentId, updatedAt: new Date()});
+          {...this.hintsData, id: this.titleContentServiceId, updatedAt: new Date()});
         alert('Dados atualizados com sucesso!');
       })
       .catch(err => {
@@ -68,8 +71,7 @@ export class PricesTableComponent implements OnInit {
       )
         
     }
-    console.log(this.isInternalPage);
+    console.log(this.isLoggedIn);
     console.log('Salvando dados...');
   }
-
 }

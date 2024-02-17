@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { LOCAL_STORAGE_KEY } from 'src/app/constants/local-storage-key.constant';
 import { TitleContent } from 'src/app/models/home/title-content.model';
 import { TitleContentService } from 'src/app/services/home/title-content.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { map } from 'rxjs/operators';
 import { Stores } from 'src/app/models/home/stores.model';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 
 @Component({
   selector: 'app-stores',
@@ -16,7 +16,7 @@ export class StoresComponent {
   constructor(
     private titleContentService: TitleContentService,
     private localStorageService: LocalStorageService,
-    private router: Router,    
+    private authService: AuthService,
   ) {}
 
   titleContentId = '';
@@ -25,7 +25,7 @@ export class StoresComponent {
     storesNeighborhoodsContent: [''],
     storesPhonesContent: ['']
   }
-  isInternalPage = this.router.url.includes("internal");
+  isLoggedIn = this.authService.isLogged;
 
   ngOnInit() {
     console.log('entrou ngOnInit stores');
@@ -71,8 +71,24 @@ export class StoresComponent {
       )
         
     }
-    console.log(this.isInternalPage);
+    console.log(this.isLoggedIn);
     console.log('Salvando dados...');
+  }
+
+  deleteTableElement(index: number) {
+    this.storesData.storesNeighborhoodsContent.splice(index, 1);
+    this.storesData.storesAddressesContent.splice(index, 1);
+    this.storesData.storesPhonesContent.splice(index, 1);
+  }
+
+  addTableElement() {
+    this.storesData.storesNeighborhoodsContent.push('');
+    this.storesData.storesAddressesContent.push('');
+    this.storesData.storesPhonesContent.push('');
+  }
+
+  trackByIndex (index: number) { 
+    return index 
   }
 
 }

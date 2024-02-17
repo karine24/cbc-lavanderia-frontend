@@ -5,6 +5,7 @@ import { LOCAL_STORAGE_KEY } from 'src/app/constants/local-storage-key.constant'
 import { Prices } from 'src/app/models/home/prices.model';
 import { TitleContent } from 'src/app/models/home/title-content.model';
 import { TitleContentService } from 'src/app/services/home/title-content.service';
+import { AuthService } from 'src/app/shared/services/auth/auth.service';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 
 @Component({
@@ -15,7 +16,7 @@ import { LocalStorageService } from 'src/app/shared/services/local-storage/local
 export class PricesComponent implements OnInit {
   constructor(
     private titleContentService: TitleContentService,
-    private router: Router,
+    private authService: AuthService,
     private localStorageService: LocalStorageService
   ) {}
 
@@ -23,7 +24,7 @@ export class PricesComponent implements OnInit {
   pageData: Prices = {
     pricesHintContent: '',
   }
-  isInternalPage = this.router.url.includes("internal");
+  isLoggedIn = this.authService.isLogged;
 
   ngOnInit() {
     console.log('entrou ngOnInit home');
@@ -68,7 +69,7 @@ export class PricesComponent implements OnInit {
       )
         
     }
-    console.log(this.isInternalPage);
+    console.log(this.isLoggedIn);
     console.log('Salvando dados...');
   }
 
