@@ -6,13 +6,12 @@ import { StoresComponent } from './components/stores/stores.component';
 import { PricesComponent } from './components/prices/prices.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { secureInnerPageGuard } from './shared/guard/secure-inner-page.guard';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { PricesDetailsComponent } from './components/prices-details/prices-details.component';
 import { HintsComponent } from './components/hints/hints.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: HomeComponent , pathMatch: 'full'},
   {path: 'login', component: SignInComponent },
   {path: 'forgot-password', component: ForgotPasswordComponent },
   {path: 'company', component: CompanyComponent},
