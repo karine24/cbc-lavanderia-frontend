@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Home } from 'src/app/models/home/home.model';
 import { TitleContentService } from 'src/app/services/home/title-content.service';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
 import { LocalStorageService } from 'src/app/shared/services/local-storage/local-storage.service';
 import { LOCAL_STORAGE_KEY } from 'src/app/constants/local-storage-key.constant';
 import { TitleContent } from 'src/app/models/home/title-content.model';
