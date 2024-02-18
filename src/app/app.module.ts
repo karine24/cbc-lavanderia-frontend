@@ -53,8 +53,7 @@ import { CorsInterceptor } from './shared/services/interceptor/cors.interceptor'
     provideAuth(() => getAuth()),
     AngularFirestoreModule,
   ],
-  providers: [AuthService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
-    { provide: HTTP_INTERCEPTORS, useClass: CorsInterceptor, multi: true }],
+  providers: [AuthService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
