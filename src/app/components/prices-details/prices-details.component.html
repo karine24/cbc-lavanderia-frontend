@@ -6,7 +6,7 @@
     <div class="title"><h5>Preços - {{typeName}}</h5></div>    
     <hr>
 
-    <table *ngIf="!isLoggedIn" class="table table-striped table-bordered">
+    <table *ngIf="!(isLoggedIn | async)" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col">Artigo</th>
@@ -21,7 +21,7 @@
         </tbody>
     </table>
 
-    <table *ngIf="isLoggedIn" class="table table-striped table-bordered">
+    <table *ngIf="isLoggedIn | async" class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col">Bairro</th>
@@ -37,16 +37,16 @@
             </tr>
         </tbody>
     </table>
-    <button *ngIf="isLoggedIn" class="btn btn-secondary" type="button" (click)="addTableElement()">+</button>
+    <button *ngIf="isLoggedIn | async" class="btn btn-secondary" type="button" (click)="addTableElement()">+</button>
 </div>
 
 <div class="row odd prices-notes">
     <div class="round-box col-12">
-        <p *ngIf="!isLoggedIn">{{notes}}</p>
-        <p *ngIf="isLoggedIn"><textarea autosize [(ngModel)]="notes"></textarea></p>
+        <p *ngIf="!(isLoggedIn | async)">{{notes}}</p>
+        <p *ngIf="isLoggedIn | async"><textarea autosize [(ngModel)]="notes"></textarea></p>
     </div>
 </div>
 
-<div class="row odd save-button" *ngIf="isLoggedIn">
+<div class="row odd save-button" *ngIf="isLoggedIn | async">
     <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
 </div>
