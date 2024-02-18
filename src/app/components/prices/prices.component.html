@@ -7,8 +7,8 @@
     <div class="round-box col-12">
         <h5>Dicas <img src="assets/icons/lightbulb-fill.svg"></h5>
 
-        <p *ngIf="!isLoggedIn">{{pageData.pricesHintContent}}</p>
-        <p *ngIf="isLoggedIn"><textarea rows="1" [(ngModel)]="pageData.pricesHintContent"></textarea></p>
+        <p *ngIf="!(isLoggedIn | async)">{{pageData.pricesHintContent}}</p>
+        <p *ngIf="isLoggedIn | async"><textarea rows="1" [(ngModel)]="pageData.pricesHintContent"></textarea></p>
     </div>
 </div>
 
@@ -65,8 +65,8 @@
     </div>
 </div>
 
-<div class="row odd save-button" *ngIf="isLoggedIn">
+<div class="row odd save-button" *ngIf="isLoggedIn | async">
     <button type="submit" class="btn btn-primary" (click)="onSave()">Save</button>
 </div>
-<div class="row odd empty" *ngIf="!isLoggedIn">
+<div class="row odd empty" *ngIf="!(isLoggedIn | async)">
 </div>
