@@ -12,7 +12,7 @@ import { PricesComponent } from './components/prices/prices.component';
 import { ContactComponent } from './components/contact/contact.component';
 // Firebase services + environment module
 import { environment } from '../environments/environment';
-import { provideAuth,getAuth } from '@angular/fire/auth';
+import { provideAuth, getAuth } from '@angular/fire/auth';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { AuthService } from './shared/services/auth/auth.service';
@@ -24,6 +24,8 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { AutosizeModule } from 'ngx-autosize';
 import { PricesDetailsComponent } from './components/prices-details/prices-details.component';
 import { HintsComponent } from './components/hints/hints.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { CorsInterceptor } from './shared/services/interceptor/cors.interceptor';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,8 @@ import { HintsComponent } from './components/hints/hints.component';
     provideAuth(() => getAuth()),
     AngularFirestoreModule,
   ],
-  providers: [AuthService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase }],
+  providers: [AuthService, { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
+    { provide: HTTP_INTERCEPTORS, useClass: CorsInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

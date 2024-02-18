@@ -11,7 +11,7 @@ import { PricesDetailsComponent } from './components/prices-details/prices-detai
 import { HintsComponent } from './components/hints/hints.component';
 
 const routes: Routes = [
-  {path: '', component: HomeComponent , pathMatch: 'full'},
+  {path: '', component: HomeComponent},
   {path: 'login', component: SignInComponent },
   {path: 'forgot-password', component: ForgotPasswordComponent },
   {path: 'company', component: CompanyComponent},
