@@ -12,8 +12,8 @@
         <textarea autosize [(ngModel)]="homeData.homeInfoContent"></textarea>
     </div>
 
-    <div>
-        <a class="right-link" routerLink="company">Mais detalhes</a>
+    <div class="text-end right-link">
+        <a routerLink="company">Mais detalhes</a>
     </div>    
 </div>
 
@@ -42,8 +42,8 @@
         <p *ngIf="!(isLoggedIn | async)">{{homeData.hintContent}}</p>
         <p *ngIf="isLoggedIn | async"><textarea autosize [(ngModel)]="homeData.hintContent"></textarea></p>
 
-        <div class="row col-12">
-            <a class="right-link" routerLink="hints">Mais detalhes</a>
+        <div class="text-end right-link">
+            <a routerLink="hints">Mais detalhes</a>
         </div>
     </div>
 </div>
