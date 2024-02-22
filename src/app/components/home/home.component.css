@@ -46,6 +46,8 @@ h5 {
 }
 
 .right-link {
+    display: flex;
+    justify-content: right;
     padding-top: 10px;
 }
 
